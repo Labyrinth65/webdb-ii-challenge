@@ -30,7 +30,6 @@ router.get("/:id", checkCarId, async (req, res) => {
 router.post("/", checkCar, async (req, res) => {
 	try {
 		const car = await carsDB.insert(req.body);
-		// const newcar = await carsDB.get(car.id);
 		res.status(201).json(car);
 	} catch (error) {
 		console.log(error);
