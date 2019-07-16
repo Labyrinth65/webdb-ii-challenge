@@ -1,4 +1,4 @@
-const db = require("../dbConfig.js");
+const db = require("../data/dbConfig.js");
 
 module.exports = {
 	getAll: function() {
@@ -6,26 +6,24 @@ module.exports = {
 	},
 	getById: function(id) {
 		return db("cars")
-			.where("id", id)
+			.where("CarID", id)
 			.first();
 	},
 	insert: function(car) {
 		return db("cars")
 			.insert(car)
-			.then(ids => {
-				return this.getById(ids[0]);
-			});
+			.then(([id]) => this.getById(id).first());
 	},
 	update: function(id, changes) {
 		return db("cars")
-			.where("id", id)
+			.where("CarID", id)
 			.update(changes)
 			.then(count => (count > 0 ? this.getById(id) : null));
 	},
 
 	remove: function(id) {
 		return db("cars")
-			.where("id", id)
+			.where("CarID", id)
 			.del();
 	}
 };
