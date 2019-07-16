@@ -10,6 +10,8 @@ exports.up = function(knex) {
 		tbl.string("Make").notNullable();
 		tbl.string("Model").notNullable();
 		tbl.integer("Mileage").notNullable();
+		tbl.string("Transmission Type").defaultTo("unknown");
+		tbl.string("Title Status").defaultTo("unknown");
 	});
 };
 
