@@ -20,7 +20,6 @@ module.exports = {
 			.update(changes)
 			.then(count => (count > 0 ? this.getById(id) : null));
 	},
-
 	remove: function(id) {
 		return db("cars")
 			.where("CarID", id)
